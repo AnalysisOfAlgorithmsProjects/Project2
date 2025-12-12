@@ -17,6 +17,7 @@ We show that the Airport Checkpoint Coverage problem is NP-Complete (via SET COV
 All results presented in the final report (tables and plots) were generated using this code.
 
 🔺 Problem 1 — Blood Supply Routing (Max-Flow)
+
 📘 Description
 
 The implementation in Problem1.py follows the reduction described in the report:
@@ -56,6 +57,7 @@ Feasible = False
 Runtime = 1.10 ms
 
 🔺 Problem 2 — Airport Checkpoint Coverage (NP-Complete)
+
 📘 Description
 
 Problem2.py implements:
