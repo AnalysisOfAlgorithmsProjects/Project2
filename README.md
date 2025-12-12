@@ -1,6 +1,7 @@
 Implementations for AOA Project 2
 COP 5536 — Analysis of Algorithms
 Project 2 — Group 9
+
 📌 Overview
 
 This repository contains the bonus experimental implementations for the two problems analyzed in our Project 2 submission:
@@ -95,9 +96,3 @@ matplotlib
 Python standard libraries (random, collections, time)
 
 
-Figure 2 (Greedy runtime vs theoretical curve)
-
-🧠 Academic Integrity Note
-
-This repository contains only the bonus experiment code.
-All theoretical proofs, reductions, algorithms, and analysis are documented in the submitted Project 2 PDF.
