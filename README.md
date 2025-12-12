@@ -1,129 +1,103 @@
-COP 5536 – Analysis of Algorithms
+Implementations for AOA Project 2
+COP 5536 — Analysis of Algorithms
 Project 2 — Group 9
 📌 Overview
 
-This repository contains bonus experimental implementations for the two problems analyzed in our Project 2 submission:
+This repository contains the bonus experimental implementations for the two problems analyzed in our Project 2 submission:
 
 Problem 1 — Blood Supply Routing (Polynomial-Time / Max-Flow)
 
-We reduce a realistic blood transportation scenario to a maximum flow problem, solve it using an Edmonds–Karp–style algorithm, and measure runtime performance on randomly generated instances.
+We reduce a practical blood transportation network to a maximum-flow instance and evaluate the performance of an Edmonds–Karp–style algorithm on random synthetic graphs.
 
 Problem 2 — Airport Checkpoint Coverage (NP-Complete / Greedy Approximation)
 
-We prove NP-Completeness via reduction from Set Cover, then implement a greedy approximation algorithm. We also empirically study its runtime and compare it against the theoretical complexity bound.
+We show that the Airport Checkpoint Coverage problem is NP-Complete (via SET COVER) and implement the classical greedy approximation algorithm. We also empirically compare runtime growth vs. the theoretical upper bound.
 
-All experiments included in the report (tables and plots) were produced using this code.
-
-📁 Repository Structure
-Project2/
-│── Problem1.py        # Blood Supply Routing via Max-Flow (Bonus Implementation)
-│── Problem2.py        # Airport Checkpoint Coverage Greedy Algorithm + Experiments
-│── requirements.txt   # Optional Python dependencies
-│── README.md          # This file
+All results presented in the final report (tables and plots) were generated using this code.
 
 🔺 Problem 1 — Blood Supply Routing (Max-Flow)
 📘 Description
 
-This implementation follows the reduction described in the report:
+The implementation in Problem1.py follows the reduction described in the report:
 
-Donation centers and hospitals become nodes
+Donation centers → supply nodes
 
-Transportation routes become directed edges with capacities
+Hospitals → demand nodes
 
-A super-source and super-sink encode total supply and demand
+Transportation routes → directed edges with capacities
 
-Max-flow determines whether the blood demand can be fully satisfied
+A super-source and super-sink encode total supply/demand
 
-A feasible routing plan is extracted from the flow
+Edmonds–Karp is used to compute maximum flow
 
-📂 File Included
+The script also:
 
-Problem1.py implements:
+Generates random test instances
 
-Graph construction for the reduced network
+Measures runtime
 
-Custom Edmonds–Karp maximum flow
+Prints feasibility outcomes
 
-Random instance generator
+Produces results equivalent to Table I and Figure 1 in the report
 
-Runtime measurement using time.perf_counter()
+▶️ Run Problem 1
 
-Summary output used for Table I and Figure 1 in the report
+From the project directory, execute:
 
-▶️ Run Problem 1 Experiments
 python3 Problem1.py
 
 
 Example output:
 
-Nodes=80, Edges=329, Demand=753, Delivered=742, Feasible=False, Time=1.10ms
+Nodes = 80, Edges = 329
+Total Demand = 753, Delivered = 742
+Feasible = False
+Runtime = 1.10 ms
 
 🔺 Problem 2 — Airport Checkpoint Coverage (NP-Complete)
 📘 Description
 
-This implementation corresponds directly to the formalization in the report.
-The greedy algorithm chooses, at each step, the checkpoint covering the largest number of uncovered routes.
+Problem2.py implements:
 
-📂 File Included
+greedy_checkpoint_coverage() — Greedy SET COVER algorithm
 
-Problem2.py includes:
+generate_random_checkpoint_instance() — Random instance generator
 
-greedy_checkpoint_coverage() — greedy set-cover algorithm
+A complete experimental pipeline over various values of m
 
-generate_random_checkpoint_instance() — random ACC instance generator
+Aggregation of runtime statistics
 
-Experiment driver over increasing numbers of routes
+Plot comparing observed runtime vs. scaled theoretical O(n²m)
 
-Collection of:
+This script produced Table II and Figure 2 in the final report.
 
-average runtime
-
-average number of checkpoints
-
-full-cover success rate
-
-Plot comparing observed runtime to theoretical 
-𝑂
-(
-𝑛
-2
-𝑚
-)
-O(n
-2
-m)
-
-This code produced Table II and Figure 2 in the final report.
-
-▶️ Run Problem 2 Experiments
+▶️ Run Problem 2
 python3 Problem2.py
 
 
-Example summary:
+Example output:
 
-m=200, avg_n=300.0, full_cover_rate=1.00, avg_runtime=4.03ms
+m = 200, avg_n = 300.0
+Full cover rate = 1.00
+Average runtime = 4.03 ms
 
 📊 Dependencies
 
-Install all dependencies (optional):
+Install dependencies using:
 
 pip install -r requirements.txt
 
 
-Minimal required packages:
+Minimal packages required:
 
 matplotlib
 
-Standard Python libraries (random, collections, time)
+Python standard libraries (random, collections, time)
 
-🧪 Reproducibility
 
-All experiments:
+Figure 2 (Greedy runtime vs theoretical curve)
 
-Use fixed random seeds
+🧠 Academic Integrity Note
 
-Follow the same parameters as described in the Project 2 report
-
-Generate the exact tables and plots included in the document
-
-This ensures full reproducibility.
+This repository contains only the bonus experiment code.
+All theoretical proofs, reductions, algorithms, and analysis are documented in the submitted Project 2 PDF.
